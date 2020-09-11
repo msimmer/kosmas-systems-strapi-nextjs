@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/sculptures",
+      "handler": "sculpture.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/sculptures/count",
+      "handler": "sculpture.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/sculptures/:id",
+      "handler": "sculpture.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/sculptures",
+      "handler": "sculpture.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/sculptures/:id",
+      "handler": "sculpture.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/sculptures/:id",
+      "handler": "sculpture.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
