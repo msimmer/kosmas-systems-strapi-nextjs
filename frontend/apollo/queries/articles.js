@@ -4,6 +4,7 @@ const ARTICLES_QUERY = gql`
   query Articles {
     articles {
       id
+      slug
       title
     }
   }

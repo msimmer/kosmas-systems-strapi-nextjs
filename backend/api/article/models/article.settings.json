@@ -35,6 +35,10 @@
     },
     "source_url": {
       "type": "string"
+    },
+    "slug": {
+      "type": "string",
+      "unique": true
     }
   }
 }

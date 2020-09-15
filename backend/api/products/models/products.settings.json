@@ -16,8 +16,7 @@
       "type": "richtext"
     },
     "price": {
-      "type": "integer",
-      "max": 0
+      "type": "biginteger"
     },
     "currency": {
       "type": "enumeration",
@@ -47,6 +46,10 @@
       ],
       "plugin": "upload",
       "required": false
+    },
+    "slug": {
+      "type": "string",
+      "unique": true
     }
   }
 }

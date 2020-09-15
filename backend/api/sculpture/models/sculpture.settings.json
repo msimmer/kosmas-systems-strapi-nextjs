@@ -32,6 +32,10 @@
       ],
       "plugin": "upload",
       "required": false
+    },
+    "slug": {
+      "type": "string",
+      "unique": true
     }
   }
 }

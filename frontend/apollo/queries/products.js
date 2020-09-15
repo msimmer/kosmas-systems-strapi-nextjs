@@ -5,6 +5,18 @@ const PRODUCTS_QUERY = gql`
     products {
       id
       title
+      slug
+      price
+      currency
+      quantity
+      image {
+        url
+        alternativeText
+      }
+      gallery {
+        url
+        alternativeText
+      }
     }
   }
 `;
