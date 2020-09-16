@@ -5,6 +5,7 @@ const COMICS_QUERY = gql`
     comics {
       id
       title
+      slug
     }
   }
 `;

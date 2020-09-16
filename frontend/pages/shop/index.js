@@ -37,11 +37,16 @@ const Products = () => (
               src={product.image.url}
               alt={product.image.alternativeText}
             />
-            <Image
-              className="k-image-contain k-image-padding"
-              src={product.image.url}
-              alt={product.image.alternativeText}
-            />
+            <Link href={`/shop/${product.slug}`}>
+              <a>
+                <Image
+                  className="k-image-contain k-image-padding k-image-hover"
+                  src={product.image.url}
+                  alt={product.image.alternativeText}
+                />
+              </a>
+            </Link>
+
             <div className="k-product-details">
               <div className="k-text-red">{product.title}</div>
 

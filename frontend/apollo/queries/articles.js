@@ -4,8 +4,18 @@ const ARTICLES_QUERY = gql`
   query Articles {
     articles {
       id
-      slug
       title
+      image {
+        url
+        alternativeText
+      }
+      media {
+        url
+        alternativeText
+      }
+      source_name
+      source_url
+      published_at
     }
   }
 `;

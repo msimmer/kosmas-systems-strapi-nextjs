@@ -2,12 +2,14 @@ import React from "react";
 import ReactMarkdown from "react-markdown";
 
 const Page = ({ title, content }) => (
-  <div className="uk-container">
+  <div className="uk-container uk-margin-medium-top">
     <div>
-      <h2>{title}</h2>
+      <h2 className="uk-margin-medium-bottom">{title}</h2>
     </div>
-    <div>
-      <ReactMarkdown source={content} />
+    <div className="uk-grid uk-grid-medium">
+      <div className="uk-width-3-5">
+        <ReactMarkdown source={content} />
+      </div>
     </div>
   </div>
 );
