@@ -20,7 +20,11 @@ const DropdownListItem = ({ title }) => {
 
             <ul className={`k-dropdown-${className}`}>
               {comics.map((comic) => (
-                <ListItem href={`/comix/${comic.slug}`} title={comic.title} />
+                <ListItem
+                  key={comic.id}
+                  href={`/comix/${comic.slug}`}
+                  title={comic.title}
+                />
               ))}
             </ul>
           </li>

@@ -5,6 +5,12 @@ const SCULPTURES_QUERY = gql`
     sculptures {
       id
       title
+      slug
+      title
+      image {
+        url
+        alternativeText
+      }
     }
   }
 `;

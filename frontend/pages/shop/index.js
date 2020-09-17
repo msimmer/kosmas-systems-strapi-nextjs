@@ -27,33 +27,35 @@ const PurchaseDetails = ({ product }) => {
 };
 
 const Products = () => (
-  <Grid columns={2}>
+  <Grid columns={2} collapse={true}>
     <Query query={PRODUCTS_QUERY}>
       {({ products }) =>
-        products.map((product) => (
-          <div key={product.id} className="k-column-image">
-            <Image
-              className="k-image-cover k-image-filter"
-              src={product.image.url}
-              alt={product.image.alternativeText}
-            />
-            <Link href={`/shop/${product.slug}`}>
-              <a>
-                <Image
-                  className="k-image-contain k-image-padding k-image-hover"
-                  src={product.image.url}
-                  alt={product.image.alternativeText}
-                />
-              </a>
-            </Link>
+        products.map((product) => {
+          return (
+            <div key={product.id} className="k-column-image">
+              <Image
+                className="k-image-cover k-image-filter"
+                src={product.image.url}
+                alt={product.image.alternativeText}
+              />
+              <Link href={`/shop/${product.slug}`}>
+                <a>
+                  <Image
+                    className="k-image-contain k-image-padding k-image-hover"
+                    src={product.image.url}
+                    alt={product.image.alternativeText}
+                  />
+                </a>
+              </Link>
 
-            <div className="k-product-details">
-              <div className="k-text-red">{product.title}</div>
+              <div className="k-product-details">
+                <div className="k-text-red">{product.title}</div>
 
-              <PurchaseDetails product={product} />
+                <PurchaseDetails product={product} />
+              </div>
             </div>
-          </div>
-        ))
+          );
+        })
       }
     </Query>
   </Grid>

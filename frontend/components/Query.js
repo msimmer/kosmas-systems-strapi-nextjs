@@ -16,6 +16,7 @@ const Query = ({ children, query, id, slug }) => {
         Error: {JSON.stringify(error, " ", 2)}
       </pre>
     );
+
   return children(data);
 };
 

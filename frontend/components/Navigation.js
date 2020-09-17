@@ -13,7 +13,7 @@ const Navigation = () => (
       <li style={{ visibility: "hidden", height: 0 }}>
         <h1>Kosmas Systems</h1>
       </li>
-      <li className="k-list-item-home uk-margin-small-bottom">
+      <li className="k-list-item-home uk-margin-large-bottom">
         <Link href="/">
           <strong>
             <a>
