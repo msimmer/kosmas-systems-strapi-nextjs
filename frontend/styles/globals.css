@@ -9,20 +9,10 @@
   --red: #f00;
   --blue: #00f;
   --white: #fff;
-}
 
-@font-face {
-  font-family: "AlteDIN";
-  src: url("/fonts/Alte_DIN_1451_Mittelschrift_Bold.ttf") format("truetype");
-  font-weight: bold;
-  font-style: normal;
-}
+  --offset-top: 200px;
 
-@font-face {
-  font-family: "AlteDIN";
-  src: url("/fonts/Alte_DIN_1451_Mittelschrift_Regular.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
+  --font-base: Helvetica, Arial, "AlteDIN" sans-serif;
 }
 
 *,
@@ -39,7 +29,7 @@ html {
 }
 
 body {
-  font-family: "AlteDIN";
+  font-family: var(--font-base);
   font-size: 2rem;
   font-weight: bold;
   line-height: 1.3;
@@ -58,6 +48,14 @@ h6 {
   line-height: 1.1;
 }
 
+em {
+  color: inherit;
+}
+
+.k-text-small {
+  font-size: 1.3rem;
+}
+
 .k-sidebar {
   position: fixed;
   top: 0;
@@ -68,8 +66,6 @@ h6 {
 
   padding-top: var(--md);
   padding-left: var(--sm);
-
-  /* background-color: pink; */
 }
 
 .k-padding-small-right {
@@ -78,6 +74,10 @@ h6 {
 
 .k-margin-small-right {
   margin-right: var(--sm) !important;
+}
+
+.k-nav {
+  margin-top: var(--offset-top);
 }
 
 .k-nav ul {
@@ -95,9 +95,23 @@ h6 {
   text-decoration: none;
 }
 
-.k-list-item-home {
-  font-size: 1.4rem !important;
-  letter-spacing: 3px;
+.k-text-random {
+  position: fixed;
+  top: var(--md);
+  left: var(--md);
+
+  font-size: 7vw !important;
+  letter-spacing: -3px;
+  z-index: 1001;
+}
+
+.k-text-random a {
+  color: var(--black);
+  text-decoration: none;
+}
+
+.k-home-text {
+  font-size: 4vw;
 }
 
 .k-column-image {
@@ -255,7 +269,7 @@ button {
   padding: 0;
   border: 0;
   background-color: var(--white);
-  font-family: AlteDIN;
+  font-family: var(--font-base);
   font-size: 2rem;
   font-weight: bold;
   line-height: 1.3;
@@ -301,4 +315,94 @@ ul.k-dropdown-open {
   object-fit: contain;
   object-position: left;
   font-family: "object-fit: contain; object-position: left;";
+}
+
+.k-carousel {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-wrap: nowrap;
+  padding: var(--md) 0;
+  overflow: hidden;
+}
+
+.k-carousel-image {
+  width: 100%;
+  height: 100%;
+  flex: 0 0 100%;
+  cursor: pointer;
+  transition: transform 200ms ease-out;
+}
+
+.k-carousel-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  font-family: "object-fit: contain; object-position: center;";
+}
+
+.k-product-actions {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.k-product-title {
+  font-size: 2.5rem;
+}
+
+.k-button-actions-buy {
+  padding: var(--sm) var(--lg);
+  display: block;
+
+  border: 3px solid var(--red);
+  background-color: var(--red);
+  color: var(--white);
+}
+
+.k-button-actions-buy:hover {
+  background-color: var(--white);
+  color: var(--red);
+}
+
+.k-page {
+  margin-top: var(--offset-top);
+}
+
+/* UIkit extensions */
+.uk-margin-small-top {
+  margin-top: var(--sm) !important;
+}
+
+.uk-margin-small-right {
+  margin-right: var(--sm) !important;
+}
+
+.uk-margin-small-bottom {
+  margin-bottom: var(--sm) !important;
+}
+
+.uk-margin-small-left {
+  margin-left: var(--sm) !important;
+}
+
+.uk-padding-small-top {
+  padding-top: var(--sm) !important;
+}
+
+.uk-padding-medium-right {
+  padding-right: var(--md) !important;
+}
+
+.uk-padding-medium-bottom {
+  padding-bottom: var(--md) !important;
+}
+
+.uk-padding-medium-left {
+  padding-left: var(--md) !important;
+}
+
+.k-align-items-flex-end {
+  align-items: flex-end !important;
 }

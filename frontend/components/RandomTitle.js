@@ -21,8 +21,8 @@ const randomTitle = () => {
 };
 
 // Refresh on page reload
-const title = randomTitle();
+// const title = randomTitle();
 
-const RandomTitle = () => <>{title}</>;
+const RandomTitle = () => <>{randomTitle()}</>;
 
 export default RandomTitle;
