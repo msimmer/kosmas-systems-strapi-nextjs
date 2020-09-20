@@ -41,20 +41,29 @@ type QueryData = ComicsData &
   WorksData &
   ProductsData;
 
-interface QueryProps {
-  children: (data: QueryData) => JSX.Element;
-  query: DocumentNode;
+interface QueryVariables {
   id?: number;
   slug?: string | string[] | undefined;
 }
 
+interface QueryParams {
+  variables?: QueryVariables;
+}
+
+interface QueryProps extends QueryVariables {
+  children: (data: QueryData) => JSX.Element;
+  query: DocumentNode;
+}
+
 const Query = ({ children, query, id, slug }: QueryProps) => {
-  const { data, loading, error } = useQuery(query, {
-    variables: {
-      id,
-      slug,
-    },
-  });
+  const variables: QueryVariables = {};
+  const params: QueryParams = {};
+
+  if (id) variables.id = id;
+  if (slug) variables.slug = slug;
+  if (Object.keys(variables).length) params.variables = variables;
+
+  const { data, loading, error } = useQuery(query, params);
 
   if (loading) return <p>Loading ...</p>;
 
@@ -65,7 +74,6 @@ const Query = ({ children, query, id, slug }: QueryProps) => {
       </pre>
     );
 
-  // return children;
   return children(data);
 };
 
