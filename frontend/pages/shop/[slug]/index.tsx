@@ -1,12 +1,22 @@
 import React from "react";
 import ReactMarkdown from "react-markdown";
 import { useRouter } from "next/router";
-import Query from "../../../components/Query";
-import Carousel from "../../../components/Carousel";
-import Price from "../../../components/Price";
-import PRODUCT_QUERY from "../../../apollo/queries/product";
+import Query from "@components/Query";
+import Carousel from "@components/Carousel";
+import Price from "@components/Price";
+import PRODUCT_QUERY from "@queries/product";
+import { IImage, IImages, IProduct } from "k-component";
 
-const ProductImages = ({ image, gallery }) => {
+type IProductDetailsProps = Pick<IProduct, "title" | "content">;
+
+type IProductActionsProps = Pick<IProduct, "price" | "currency" | "quantity">;
+
+interface IProductImagesProps {
+  image: IImage;
+  gallery: IImages;
+}
+
+const ProductImages = ({ image, gallery }: IProductImagesProps) => {
   const images = [image].concat(gallery);
   return (
     <div className="uk-width-3-5@s uk-padding-medium-right">
@@ -15,7 +25,7 @@ const ProductImages = ({ image, gallery }) => {
   );
 };
 
-const ProductDetails = (props) => (
+const ProductDetails = (props: IProductDetailsProps) => (
   <>
     <h2 className="k-product-title uk-margin-small-bottom">{props.title}</h2>
 
@@ -27,7 +37,7 @@ const ProductDetails = (props) => (
   </>
 );
 
-const ProductActions = (props) => {
+const ProductActions = (props: IProductActionsProps) => {
   if (!props.price || !props.currency)
     return (
       <div className="uk-margin-medium-left">

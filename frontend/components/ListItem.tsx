@@ -1,7 +1,12 @@
 import React from "react";
 import Link from "next/link";
 
-const ListItem = ({ href, title }) => {
+interface ListItemProps {
+  href?: string;
+  title: string;
+}
+
+const ListItem = ({ href, title }: ListItemProps) => {
   const path = href ?? `/${title.toLowerCase()}`;
   return (
     <li>

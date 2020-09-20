@@ -6,7 +6,8 @@ import UIkit from "uikit";
 import Icons from "uikit/dist/js/uikit-icons";
 import { ApolloProvider } from "@apollo/react-hooks";
 import withData from "../utils/apollo";
-import Navigation from "../components/Navigation";
+import Navigation from "@components/Navigation";
+import { AppProps } from "next/dist/next-server/lib/router/router";
 
 import "../assets/css/style.css";
 
@@ -17,11 +18,11 @@ import "../styles/globals.css";
 // loads the Icon plugin
 UIkit.use(Icons);
 
-const RandomTitle = dynamic(() => import("../components/RandomTitle"), {
+const RandomTitle = dynamic(() => import("@components/RandomTitle"), {
   ssr: false,
 });
 
-const App = ({ Component, pageProps, apollo }) => (
+const App = ({ Component, pageProps, apollo }: AppProps) => (
   <ApolloProvider client={apollo}>
     <Head>
       <title>Kosmas Systems</title>

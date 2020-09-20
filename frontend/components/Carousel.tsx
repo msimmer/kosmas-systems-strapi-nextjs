@@ -1,12 +1,17 @@
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import Image from "./Image";
+import { IImages } from "k-component";
 
-const Carousel = ({ images }) => {
-  const carousel = useRef(null);
+const { useState, useEffect, useRef } = React;
+
+const Carousel = ({ images }: { images: IImages }) => {
+  const carousel = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState(0);
   const [index, setIndex] = useState(0);
 
   const handleClick = () => {
+    if (!carousel?.current) return;
+
     const nextIndex = index === images.length - 1 ? 0 : index + 1;
     const width = carousel.current.offsetWidth;
     const nextPosition = width * nextIndex * -1;
@@ -17,6 +22,8 @@ const Carousel = ({ images }) => {
 
   useEffect(() => {
     const handleResize = () => {
+      if (!carousel?.current) return;
+
       const width = carousel.current.offsetWidth;
       const nextPosition = width * index * -1;
 

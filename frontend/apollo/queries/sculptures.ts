@@ -6,7 +6,6 @@ const SCULPTURES_QUERY = gql`
       id
       title
       slug
-      title
       image {
         url
         alternativeText

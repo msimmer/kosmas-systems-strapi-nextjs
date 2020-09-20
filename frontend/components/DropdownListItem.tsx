@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 import Query from "./Query";
 import ListItem from "./ListItem";
-import COMICS_QUERY from "../apollo/queries/comics";
+import COMICS_QUERY from "@queries/comics";
+import { IComics } from "k-component";
 
-const DropdownListItem = ({ title }) => {
+interface DropdownListItemProps {
+  title: string;
+}
+
+const DropdownListItem = ({ title }: DropdownListItemProps) => {
   const [open, setOpen] = useState(false);
   const className = open ? "open" : "closed";
 
@@ -11,8 +16,8 @@ const DropdownListItem = ({ title }) => {
 
   return (
     <Query query={COMICS_QUERY}>
-      {({ comics }) => {
-        if (!comics.length) return null;
+      {({ comics }: { comics: IComics }) => {
+        if (!comics.length) return <></>;
 
         return (
           <li>

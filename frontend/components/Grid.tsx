@@ -1,6 +1,12 @@
 import React from "react";
 
-const Grid = ({ columns, children, collapse }) => (
+interface GridProps {
+  columns: number;
+  children?: React.ReactChild;
+  collapse?: boolean;
+}
+
+const Grid = ({ columns, children, collapse }: GridProps) => (
   <div
     className={`uk-grid uk-grid-medium ${
       collapse ? "uk-grid-collapse" : ""

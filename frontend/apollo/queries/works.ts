@@ -4,6 +4,7 @@ const WORKS_QUERY = gql`
   query Works {
     works {
       id
+      title
       gallery {
         id
         url

@@ -16,5 +16,5 @@ export default withApollo(
     new ApolloClient({
       link,
       cache: new InMemoryCache().restore(initialState || {}),
-    })
+    }),
 );

@@ -1,0 +1,6 @@
+.next/**
+**/node_modules/**
+out/**
+.prettierrc.js
+public/**
+next.config.js

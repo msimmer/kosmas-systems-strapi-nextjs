@@ -1,6 +1,12 @@
 import React from "react";
 
-const Image = ({ src, alt, className }) => {
+interface ImageProps {
+  src: string;
+  alt: string;
+  className?: string;
+}
+
+const Image = ({ src, alt, className }: ImageProps) => {
   const classname = className || "";
   const url = `${process.env.API_URL}${src}`;
 

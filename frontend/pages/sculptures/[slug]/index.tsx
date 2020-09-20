@@ -1,10 +1,11 @@
 import React from "react";
 import { useRouter } from "next/router";
 import ReactMarkdown from "react-markdown";
-import Grid from "../../../components/Grid";
-import Query from "../../../components/Query";
-import Image from "../../../components/Image";
-import SCULPTURE_QUERY from "../../../apollo/queries/sculpture";
+import Grid from "@components/Grid";
+import Query from "@components/Query";
+import Image from "@components/Image";
+import SCULPTURE_QUERY from "@queries/sculpture";
+import { ISculptures } from "k-component";
 
 const Sculpture = () => {
   const router = useRouter();
@@ -13,12 +14,12 @@ const Sculpture = () => {
   return (
     <Grid columns={1}>
       <Query query={SCULPTURE_QUERY} slug={slug}>
-        {({ sculptures }) => {
+        {({ sculptures }: { sculptures: ISculptures }) => {
           const [sculpture] = sculptures;
 
           return (
             <div>
-              <h2 className="uk-margin-medium-top uk-margin-medium-bottom">
+              <h2 className="k-margin-mega-top uk-margin-medium-bottom">
                 {sculpture.title}
               </h2>
 
