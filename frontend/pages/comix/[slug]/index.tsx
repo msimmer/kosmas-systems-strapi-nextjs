@@ -1,36 +1,43 @@
 import React from "react";
-import { useRouter } from "next/router";
+import { GetStaticPaths, GetStaticProps } from "next";
 import Grid from "@components/Grid";
-import Query from "@components/Query";
-import COMIC_QUERY from "@queries/comic";
 import Image from "@components/Image";
-import { IComics } from "k-component";
+import { IComic } from "k-component";
+import { initializeApollo } from "@lib/apollo";
+import { REVALIDATION_TIMEOUT } from "@lib/constants";
+import COMIC_QUERY from "@queries/comic";
+import COMICS_QUERY from "@queries/comics";
 
-const Comic = () => {
-  const router = useRouter();
-  const { slug } = router.query;
+const Comic = ({ comic }: { comic: IComic }) => (
+  <Grid columns={1}>
+    <>
+      {comic.gallery.map((image) => (
+        <Image key={image.url} src={image.url} alt={image.alternativeText} />
+      ))}
+    </>
+  </Grid>
+);
 
-  return (
-    <Grid columns={1}>
-      <Query query={COMIC_QUERY} slug={slug}>
-        {({ comics }: { comics: IComics }) => {
-          const [comic] = comics;
+export const getStaticPaths: GetStaticPaths = async () => {
+  const apolloClient = initializeApollo();
+  const { data } = await apolloClient.query({ query: COMICS_QUERY });
+  const paths = data.comics.map(({ slug }: IComic) => ({ params: { slug } }));
 
-          return (
-            <>
-              {comic.gallery.map((image) => (
-                <Image
-                  key={image.url}
-                  src={image.url}
-                  alt={image.alternativeText}
-                />
-              ))}
-            </>
-          );
-        }}
-      </Query>
-    </Grid>
-  );
+  return { paths, fallback: false };
+};
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const apolloClient = initializeApollo();
+  const { data } = await apolloClient.query({
+    query: COMIC_QUERY,
+    variables: { slug: params?.slug },
+  });
+  const [comic] = data.comics;
+
+  return {
+    props: { comic },
+    revalidate: REVALIDATION_TIMEOUT,
+  };
 };
 
 export default Comic;

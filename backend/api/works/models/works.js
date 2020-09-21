@@ -1,5 +1,6 @@
 "use strict";
 const { createSlug } = require("../../../lib/models/sluggable");
+const { revalidate } = require("../../../lib/models/revalidateable");
 
 /**
  * Read the documentation (https://strapi.io/documentation/v3.x/concepts/models.html#lifecycle-hooks)
@@ -13,6 +14,9 @@ module.exports = {
     },
     async beforeUpdate(params, data) {
       await createSlug(params, data);
+    },
+    async afterUpdate() {
+      await revalidate("/swirl/");
     },
   },
 };

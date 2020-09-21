@@ -5,9 +5,9 @@ import dynamic from "next/dynamic";
 import UIkit from "uikit";
 import Icons from "uikit/dist/js/uikit-icons";
 import { ApolloProvider } from "@apollo/react-hooks";
-import withData from "../utils/apollo";
 import Navigation from "@components/Navigation";
 import { AppProps } from "next/dist/next-server/lib/router/router";
+import { useApollo } from "../lib/apollo";
 
 import "../assets/css/style.css";
 
@@ -22,31 +22,35 @@ const RandomTitle = dynamic(() => import("@components/RandomTitle"), {
   ssr: false,
 });
 
-const App = ({ Component, pageProps, apollo }: AppProps) => (
-  <ApolloProvider client={apollo}>
-    <Head>
-      <title>Kosmas Systems</title>
-      <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-    </Head>
+const App = ({ Component, pageProps }: AppProps) => {
+  const apolloClient = useApollo(pageProps.initialApolloState);
 
-    <div className="k-sidebar uk-width-1-5@s">
-      <Navigation />
-    </div>
+  return (
+    <ApolloProvider client={apolloClient}>
+      <Head>
+        <title>Kosmas Systems</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
 
-    <main className="uk-width-4-5@s uk-margin-auto-left@s">
-      <div className="k-text-random">
-        <Link href="/">
-          <strong>
-            <a>
-              <RandomTitle />
-            </a>
-          </strong>
-        </Link>
+      <div className="k-sidebar uk-width-1-5@s">
+        <Navigation />
       </div>
 
-      <Component {...pageProps} />
-    </main>
-  </ApolloProvider>
-);
+      <main className="uk-width-4-5@s uk-margin-auto-left@s">
+        <div className="k-text-random">
+          <Link href="/">
+            <strong>
+              <a>
+                <RandomTitle />
+              </a>
+            </strong>
+          </Link>
+        </div>
 
-export default withData(App);
+        <Component {...pageProps} />
+      </main>
+    </ApolloProvider>
+  );
+};
+
+export default App;

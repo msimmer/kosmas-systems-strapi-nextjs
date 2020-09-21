@@ -16,7 +16,7 @@ module.exports = {
       await createSlug(params, data);
     },
     async afterUpdate() {
-      revalidate("/press");
+      await revalidate("/press");
     },
   },
 };

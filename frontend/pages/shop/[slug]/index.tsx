@@ -1,11 +1,13 @@
 import React from "react";
 import ReactMarkdown from "react-markdown";
-import { useRouter } from "next/router";
-import Query from "@components/Query";
 import Carousel from "@components/Carousel";
 import Price from "@components/Price";
-import PRODUCT_QUERY from "@queries/product";
 import { IImage, IImages, IProduct } from "k-component";
+import { GetStaticPaths, GetStaticProps } from "next";
+import { initializeApollo } from "@lib/apollo";
+import PRODUCT_QUERY from "@queries/product";
+import PRODUCTS_QUERY from "@queries/products";
+import { REVALIDATION_TIMEOUT } from "@lib/constants";
 
 type IProductDetailsProps = Pick<IProduct, "title" | "content">;
 
@@ -67,26 +69,38 @@ const ProductActions = (props: IProductActionsProps) => {
   );
 };
 
-const Product = () => {
-  const router = useRouter();
-  const { slug } = router.query;
+const Product = ({ product }: { product: IProduct }) => (
+  <div className="uk-grid uk-grid-medium">
+    <ProductImages image={product.image} gallery={product.gallery} />
+    <div className="uk-width-2-5@s uk-margin-medium-top uk-margin-medium-bottom k-product-actions">
+      <ProductDetails {...product} />
+      <ProductActions {...product} />
+    </div>
+  </div>
+);
 
-  return (
-    <Query query={PRODUCT_QUERY} slug={slug}>
-      {({ products }) => {
-        const [product] = products;
-        return (
-          <div className="uk-grid uk-grid-medium">
-            <ProductImages image={product.image} gallery={product.gallery} />
-            <div className="uk-width-2-5@s uk-margin-medium-top uk-margin-medium-bottom k-product-actions">
-              <ProductDetails {...product} />
-              <ProductActions {...product} />
-            </div>
-          </div>
-        );
-      }}
-    </Query>
-  );
+export const getStaticPaths: GetStaticPaths = async () => {
+  const apolloClient = initializeApollo();
+  const { data } = await apolloClient.query({ query: PRODUCTS_QUERY });
+  const paths = data.products.map(({ slug }: IProduct) => ({
+    params: { slug },
+  }));
+
+  return { paths, fallback: false };
+};
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const apolloClient = initializeApollo();
+  const { data } = await apolloClient.query({
+    query: PRODUCT_QUERY,
+    variables: { slug: params?.slug },
+  });
+  const [product] = data.products;
+
+  return {
+    props: { product },
+    revalidate: REVALIDATION_TIMEOUT,
+  };
 };
 
 export default Product;
