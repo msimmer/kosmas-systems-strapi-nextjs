@@ -20,13 +20,14 @@ const trimTrailingSlash = (path) => path.replace(/\/+$/, "");
 
 module.exports = {
   async revalidate(path) {
-    const nextPath = encode(trimLeadingSlash(decode(path)));
-    const appUrl = trimTrailingSlash(process.env.APP_URL);
+    return;
+    // const nextPath = encode(trimLeadingSlash(decode(path)));
+    // const appUrl = trimTrailingSlash(process.env.APP_URL);
 
-    try {
-      await fetch(`${appUrl}/${nextPath}`);
-    } catch (err) {
-      console.error(err);
-    }
+    // try {
+    //   await fetch(`${appUrl}/${nextPath}`);
+    // } catch (err) {
+    //   console.error(err);
+    // }
   },
 };

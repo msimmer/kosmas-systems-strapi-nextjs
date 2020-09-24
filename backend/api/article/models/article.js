@@ -15,7 +15,8 @@ module.exports = {
     async beforeUpdate(params, data) {
       await createSlug(params, data);
     },
-    async afterUpdate() {
+    async afterUpdate(result, params, data) {
+      await strapi.services.article.findOne({ id: data.id });
       await revalidate("/press");
     },
   },
