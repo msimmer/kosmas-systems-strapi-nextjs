@@ -9,11 +9,11 @@ const Navigation = () => (
         <h1>Kosmas Systems</h1>
       </li>
 
-      <ListItem title="Press" />
       <ListItem title="Shop" />
-      <ListItem title="Sculptures" />
+      <ListItem title="Sculpture" />
       <DropdownListItem title="Comix" />
       <ListItem title="About" />
+      <ListItem title="Press" />
       <ListItem title="Swirl" />
     </ul>
   </nav>

@@ -8,7 +8,7 @@ import {
 } from "@apollo/client";
 
 // https://github.com/lfades/next-with-apollo/issues/114
-let apolloClient: ApolloClient<NormalizedCacheObject>;
+let apolloClient: any; //ApolloClient<NormalizedCacheObject>;
 
 const GRAPHQL_URL = process.env.API_URL || "http://localhost:1337";
 

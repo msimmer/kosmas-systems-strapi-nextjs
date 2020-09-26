@@ -31,12 +31,7 @@ const Products = ({ products }: { products: IProducts }) => (
     <>
       {products.map((product) => {
         return (
-          <div key={product.id} className="k-column-image">
-            <Image
-              className="k-image-cover k-image-filter"
-              src={product.image.url}
-              alt={product.image.alternativeText}
-            />
+          <div className="k-column-product" key={product.id}>
             <Link href={`/shop/${product.slug}`}>
               <a>
                 <Image
@@ -44,12 +39,16 @@ const Products = ({ products }: { products: IProducts }) => (
                   src={product.image.url}
                   alt={product.image.alternativeText}
                 />
+
+                <div
+                  className="k-column-color"
+                  style={{ backgroundColor: product.color }}
+                ></div>
               </a>
             </Link>
 
             <div className="k-product-details">
               <div className="k-text-red">{product.title}</div>
-
               <PurchaseDetails product={product} />
             </div>
           </div>

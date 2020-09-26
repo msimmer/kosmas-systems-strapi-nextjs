@@ -1,26 +1,26 @@
 import React from "react";
-import Grid from "@components/Grid";
-import Query from "@components/Query";
-import Image from "@components/Image";
-import WORKS_QUERY from "@queries/works";
-import { IWorks } from "k-component";
+import Page from "@components/Page";
+import PAGE_QUERY from "@queries/page";
+import { IPage } from "k-component";
+import { initializeApollo } from "@lib/apollo";
+import { REVALIDATION_TIMEOUT } from "@lib/constants";
 
-const Swirl = () => (
-  <Grid columns={2}>
-    <Query query={WORKS_QUERY}>
-      {({ works }: { works: IWorks }) => (
-        <>
-          {works.map((work) => (
-            <div key={work.id}>
-              {work.gallery.map((item) => (
-                <Image key={item.id} src={item.url} alt="" />
-              ))}
-            </div>
-          ))}
-        </>
-      )}
-    </Query>
-  </Grid>
+const Swirl = ({ page }: { page: IPage }) => (
+  <Page title={page.title} gallery={page.gallery} />
 );
+
+export async function getStaticProps() {
+  const apolloClient = initializeApollo();
+  const { data } = await apolloClient.query({
+    query: PAGE_QUERY,
+    variables: { id: 2 },
+  });
+  const { page } = data;
+
+  return {
+    props: { page },
+    revalidate: REVALIDATION_TIMEOUT,
+  };
+}
 
 export default Swirl;

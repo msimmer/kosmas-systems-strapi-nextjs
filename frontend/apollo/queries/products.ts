@@ -9,6 +9,7 @@ const PRODUCTS_QUERY = gql`
       price
       currency
       quantity
+      color
       image {
         url
         alternativeText

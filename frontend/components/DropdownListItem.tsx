@@ -15,27 +15,29 @@ const DropdownListItem = ({ title }: DropdownListItemProps) => {
   const toggle = () => setOpen(!open);
 
   return (
-    <Query query={COMICS_QUERY}>
-      {({ comics }: { comics: IComics }) => {
-        if (!comics.length) return <></>;
+    <li>
+      <button onClick={toggle}>{title}</button>
 
-        return (
-          <li>
-            <button onClick={toggle}>{title}</button>
+      <ul className={`k-dropdown-${className}`}>
+        <Query query={COMICS_QUERY}>
+          {({ comics }: { comics: IComics }) => {
+            if (!comics.length) return <></>;
 
-            <ul className={`k-dropdown-${className}`}>
-              {comics.map((comic) => (
-                <ListItem
-                  key={comic.id}
-                  href={`/comix/${comic.slug}`}
-                  title={comic.title}
-                />
-              ))}
-            </ul>
-          </li>
-        );
-      }}
-    </Query>
+            return (
+              <>
+                {comics.map((comic) => (
+                  <ListItem
+                    key={comic.id}
+                    href={`/comix/${comic.slug}`}
+                    title={comic.title}
+                  />
+                ))}
+              </>
+            );
+          }}
+        </Query>
+      </ul>
+    </li>
   );
 };
 

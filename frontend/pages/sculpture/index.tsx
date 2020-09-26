@@ -20,7 +20,7 @@ const Sculptures = ({ sculptures }: { sculptures: ISculptures }) => (
             />
           </div>
           <div className="k-sculpture-title k-text-shadow">
-            <Link href={`/sculptures/${sculpture.slug}`}>
+            <Link href={`/sculpture/${sculpture.slug}`}>
               <a>{sculpture.title}</a>
             </Link>
           </div>

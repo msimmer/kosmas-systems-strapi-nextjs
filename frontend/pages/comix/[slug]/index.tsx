@@ -23,7 +23,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const { data } = await apolloClient.query({ query: COMICS_QUERY });
   const paths = data.comics.map(({ slug }: IComic) => ({ params: { slug } }));
 
-  return { paths, fallback: false };
+  return { paths, fallback: "unstable_blocking" };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {

@@ -6,6 +6,11 @@ const PAGE_QUERY = gql`
       id
       title
       content
+      gallery {
+        id
+        url
+        alternativeText
+      }
     }
   }
 `;

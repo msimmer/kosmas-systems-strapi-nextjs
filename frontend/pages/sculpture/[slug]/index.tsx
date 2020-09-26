@@ -25,7 +25,7 @@ const Sculpture = ({ sculpture }: { sculpture: ISculpture }) => {
   if (!sculpture) {
     return (
       <div className="k-margin-mega-top uk-margin-medium-bottom">
-        <h1>404</h1>;
+        <h1>404</h1>
       </div>
     );
   }
@@ -58,7 +58,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const apolloClient = initializeApollo();
   const { data } = await apolloClient.query({ query: SCULPTURES_QUERY });
   const paths = data.sculptures.map(({ slug }: ISculpture) => ({
-    params: { slug },
+    params: {
+      slug,
+      fallback: "unstable_blocking", // https://github.com/vercel/next.js/pull/15672
+    },
   }));
 
   return { paths, fallback: true };

@@ -50,6 +50,11 @@
     "slug": {
       "type": "string",
       "unique": true
+    },
+    "color": {
+      "type": "string",
+      "default": "#000000",
+      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"
     }
   }
 }

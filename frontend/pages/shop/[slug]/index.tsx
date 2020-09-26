@@ -40,7 +40,7 @@ const ProductDetails = (props: IProductDetailsProps) => (
 );
 
 const ProductActions = (props: IProductActionsProps) => {
-  if (!props.price || !props.currency)
+  if (!props.price || !props.currency || !props.quantity)
     return (
       <div className="uk-margin-medium-left">
         <strong>
@@ -83,7 +83,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const apolloClient = initializeApollo();
   const { data } = await apolloClient.query({ query: PRODUCTS_QUERY });
   const paths = data.products.map(({ slug }: IProduct) => ({
-    params: { slug },
+    params: { slug, fallback: "unstable_blocking" },
   }));
 
   return { paths, fallback: false };

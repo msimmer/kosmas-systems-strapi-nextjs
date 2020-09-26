@@ -55,6 +55,7 @@ declare module "k-component" {
     id: number;
     title: string;
     content: string;
+    gallery: IImages;
   }
 
   export type IPages = IPage[];
@@ -74,6 +75,7 @@ declare module "k-component" {
     content: string;
     price: number;
     currency: ICurrency;
+    color: string;
     quantity: number;
     image: IImage;
     gallery: IImages;
