@@ -4,10 +4,9 @@ import Grid from "@components/Grid";
 import Image from "@components/Image";
 import Price from "@components/Price";
 import { IProduct, IProducts } from "k-component";
-import { GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
 import { initializeApollo } from "@lib/apollo";
 import PRODUCTS_QUERY from "@queries/products";
-import { REVALIDATION_TIMEOUT } from "@lib/constants";
 
 const PurchaseDetails = ({ product }: { product: IProduct }) => {
   if (product.quantity < 1) return <div>SOLD OUT</div>;
@@ -58,15 +57,12 @@ const Products = ({ products }: { products: IProducts }) => (
   </Grid>
 );
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const apolloClient = initializeApollo();
   const { data } = await apolloClient.query({ query: PRODUCTS_QUERY });
   const { products } = data;
 
-  return {
-    props: { products },
-    revalidate: REVALIDATION_TIMEOUT,
-  };
+  return { props: { products } };
 };
 
 export default Products;

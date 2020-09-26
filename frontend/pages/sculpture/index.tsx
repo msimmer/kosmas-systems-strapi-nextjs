@@ -5,8 +5,7 @@ import Image from "@components/Image";
 import SCULPTURES_QUERY from "@queries/sculptures";
 import { ISculptures } from "k-component";
 import { initializeApollo } from "@lib/apollo";
-import { REVALIDATION_TIMEOUT } from "@lib/constants";
-import { GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
 
 const Sculptures = ({ sculptures }: { sculptures: ISculptures }) => (
   <Grid columns={2} collapse={true}>
@@ -30,15 +29,12 @@ const Sculptures = ({ sculptures }: { sculptures: ISculptures }) => (
   </Grid>
 );
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const apolloClient = initializeApollo();
   const { data } = await apolloClient.query({ query: SCULPTURES_QUERY });
-  const { sculptures } = data;
+  const { products } = data;
 
-  return {
-    props: { sculptures },
-    revalidate: REVALIDATION_TIMEOUT,
-  };
+  return { props: { products } };
 };
 
 export default Sculptures;
