@@ -18,7 +18,7 @@ const ArticleImage = ({ image }: { image: IImage }) => {
 };
 
 const Articles = ({ articles }: { articles: IArticles }) => (
-  <Grid columns={2}>
+  <Grid columns={2} collapse={true}>
     <>
       {articles.map((article) => {
         const sourceURL = article.source_url || "#";

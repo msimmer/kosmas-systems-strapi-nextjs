@@ -32,9 +32,9 @@ const Sculptures = ({ sculptures }: { sculptures: ISculptures }) => (
 export const getServerSideProps: GetServerSideProps = async () => {
   const apolloClient = initializeApollo();
   const { data } = await apolloClient.query({ query: SCULPTURES_QUERY });
-  const { products } = data;
+  const { sculptures } = data;
 
-  return { props: { products } };
+  return { props: { sculptures } };
 };
 
 export default Sculptures;

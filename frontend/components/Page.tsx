@@ -4,7 +4,7 @@ import Image from "./Image";
 import { IImages } from "k-component";
 
 interface PageProps {
-  title: string;
+  title?: string;
   content?: string;
   gallery?: IImages;
 }
@@ -12,9 +12,11 @@ interface PageProps {
 const Page = ({ title, content, gallery }: PageProps) => (
   <div className="uk-container k-margin-mega-top">
     <div className="uk-grid uk-grid-medium uk-margin-small-top">
-      <div>
-        <h2 className="uk-margin-medium-bottom">{title}</h2>
-      </div>
+      {title && (
+        <div>
+          <h2 className="uk-margin-medium-bottom">{title}</h2>
+        </div>
+      )}
 
       {content && (
         <div className="uk-grid uk-grid-medium">

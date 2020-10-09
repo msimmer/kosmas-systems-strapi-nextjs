@@ -5,9 +5,7 @@ import { IPage } from "k-component";
 import { initializeApollo } from "@lib/apollo";
 import { GetServerSideProps } from "next";
 
-const Swirl = ({ page }: { page: IPage }) => (
-  <Page title={page.title} gallery={page.gallery} />
-);
+const Swirl = ({ page }: { page: IPage }) => <Page gallery={page.gallery} />;
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const apolloClient = initializeApollo();

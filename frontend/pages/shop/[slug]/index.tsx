@@ -83,10 +83,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const apolloClient = initializeApollo();
   const { data } = await apolloClient.query({ query: PRODUCTS_QUERY });
   const paths = data.products.map(({ slug }: IProduct) => ({
-    params: { slug, fallback: "unstable_blocking" },
+    params: { slug },
   }));
 
-  return { paths, fallback: false };
+  return { paths, fallback: "unstable_blocking" };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
