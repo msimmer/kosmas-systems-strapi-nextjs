@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_content_html_contents",
+  "info": {
+    "name": "htmlContent",
+    "icon": "pen-fancy"
+  },
+  "options": {},
+  "attributes": {
+    "html": {
+      "type": "richtext"
+    }
+  }
+}

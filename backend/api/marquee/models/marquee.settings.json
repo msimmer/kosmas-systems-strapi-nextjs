@@ -1,0 +1,18 @@
+{
+  "kind": "singleType",
+  "collectionName": "marquees",
+  "info": {
+    "name": "Marquee"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "bundle": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content.content"
+    }
+  }
+}

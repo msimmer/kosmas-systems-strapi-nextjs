@@ -82,4 +82,13 @@ declare module "k-component" {
   }
 
   export type IProducts = IProduct[];
+
+  interface IBundle {
+    id: number;
+    markdown: string;
+  }
+
+  export interface IMarquee {
+    bundle: IBundle[];
+  }
 }

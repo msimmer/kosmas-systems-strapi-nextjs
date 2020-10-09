@@ -10,6 +10,8 @@
   --blue: #00f;
   --white: #fff;
 
+  --height: 90vh;
+
   --offset-top: 200px;
 
   --font-base: Helvetica, Arial, "AlteDIN", sans-serif;
@@ -115,7 +117,7 @@ em {
 }
 
 .k-column-product {
-  height: 100vh;
+  height: var(--height);
   position: relative;
 }
 
@@ -174,12 +176,6 @@ em {
   bottom: var(--sm);
   font-size: 1.6rem;
   font-weight: bold;
-}
-
-.k-sculpture-title a {
-  display: inline-block;
-  padding: var(--md) var(--md) var(--sm) var(--md);
-  background-color: var(--white);
 }
 
 .k-text-red {
@@ -294,7 +290,7 @@ ul.k-dropdown-open {
 }
 
 .k-sculpture {
-  height: 75vh;
+  height: var(--height);
   position: relative;
 }
 
@@ -412,4 +408,19 @@ ul.k-dropdown-open {
 
 .k-align-items-flex-end {
   align-items: flex-end !important;
+}
+
+.k-marquee {
+  background: var(--red);
+  color: var(--white);
+  padding: var(--sm) 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+.k-marquee span p {
+  display: inline-block;
+  margin: 0 var(--md);
 }

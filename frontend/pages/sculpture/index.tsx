@@ -18,7 +18,7 @@ const Sculptures = ({ sculptures }: { sculptures: ISculptures }) => (
               alt={sculpture.image.alternativeText}
             />
           </div>
-          <div className="k-sculpture-title k-text-shadow">
+          <div className="k-sculpture-title k-padding-small-right k-text-red">
             <Link href={`/sculpture/${sculpture.slug}`}>
               <a>{sculpture.title}</a>
             </Link>

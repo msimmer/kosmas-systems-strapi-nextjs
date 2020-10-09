@@ -23,6 +23,7 @@
     "next-with-apollo": "^5.1.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
+    "react-malarquee": "^0.0.13",
     "react-markdown": "^4.3.1",
     "uikit": "^3.5.7"
   },

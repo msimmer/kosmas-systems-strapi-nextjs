@@ -8,6 +8,7 @@ import {
   IPage,
   IWorks,
   IProducts,
+  IMarquee,
 } from "k-component";
 
 interface ComicsData {
@@ -34,12 +35,17 @@ interface ProductsData {
   products: IProducts;
 }
 
+interface MarqueeData {
+  marquee: IMarquee;
+}
+
 type QueryData = ComicsData &
   ArticlesData &
   SculptureData &
   PageData &
   WorksData &
-  ProductsData;
+  ProductsData &
+  MarqueeData;
 
 interface QueryVariables {
   id?: number;
