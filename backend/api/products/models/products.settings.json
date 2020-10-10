@@ -55,6 +55,12 @@
       "type": "string",
       "default": "#000000",
       "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"
+    },
+    "shopifyElementId": {
+      "type": "string"
+    },
+    "shopifyScript": {
+      "type": "text"
     }
   }
 }

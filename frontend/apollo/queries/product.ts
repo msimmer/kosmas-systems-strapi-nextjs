@@ -9,6 +9,8 @@ const PRODUCT_QUERY = gql`
       price
       currency
       quantity
+      shopifyElementId
+      shopifyScript
       image {
         id
         url

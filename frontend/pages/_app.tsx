@@ -31,7 +31,6 @@ const App = ({ Component, pageProps }: AppProps) => {
       <Head>
         <title>Kosmas Systems</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <script src="https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js"></script>
       </Head>
 
       <div className="k-marquee-header uk-width-1">

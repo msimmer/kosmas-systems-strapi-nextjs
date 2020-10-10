@@ -1,4 +1,5 @@
 import React from "react";
+import Head from "next/head";
 import ReactMarkdown from "react-markdown";
 import Carousel from "@components/Carousel";
 import Price from "@components/Price";
@@ -11,7 +12,10 @@ import { REVALIDATION_TIMEOUT } from "@lib/constants";
 
 type IProductDetailsProps = Pick<IProduct, "title" | "content">;
 
-type IProductActionsProps = Pick<IProduct, "price" | "currency" | "quantity">;
+type IProductActionsProps = Pick<
+  IProduct,
+  "price" | "currency" | "quantity" | "shopifyElementId" | "shopifyScript"
+>;
 
 interface IProductImagesProps {
   image: IImage;
@@ -39,8 +43,35 @@ const ProductDetails = (props: IProductDetailsProps) => (
   </>
 );
 
+const ShopifyProduct = (props: IProduct) => {
+  return (
+    <>
+      <Head>
+        <script
+          key="shopify-sdk"
+          src="https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js"
+        ></script>
+
+        <script key={`shopify-product-${props.shopifyElementId}`}>
+          {props.shopifyScript}
+        </script>
+      </Head>
+
+      <div className="uk-width-1 k-product-shopify">
+        <div id={`product-component-${props.shopifyElementId}`}></div>
+      </div>
+    </>
+  );
+};
+
 const ProductActions = (props: IProductActionsProps) => {
-  if (!props.price || !props.currency || !props.quantity)
+  if (
+    !props.price ||
+    !props.currency ||
+    !props.quantity ||
+    !props.shopifyElementId ||
+    !props.shopifyScript
+  )
     return (
       <div className="uk-margin-medium-left">
         <strong>
@@ -69,15 +100,25 @@ const ProductActions = (props: IProductActionsProps) => {
   );
 };
 
-const Product = ({ product }: { product: IProduct }) => (
-  <div className="uk-grid uk-grid-medium">
-    <ProductImages image={product.image} gallery={product.gallery} />
-    <div className="uk-width-2-5@s uk-margin-medium-top uk-margin-medium-bottom k-product-actions">
-      <ProductDetails {...product} />
-      <ProductActions {...product} />
+const Product = ({ product }: { product: IProduct }) => {
+  if (!product.price || !product.currency || !product.quantity) {
+    return (
+      <div className="uk-grid uk-grid-medium">
+        <ProductImages image={product.image} gallery={product.gallery} />
+        <div className="uk-width-2-5@s uk-margin-medium-top uk-margin-medium-bottom k-product-actions">
+          <ProductDetails {...product} />
+          <ProductActions {...product} />
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="uk-grid uk-grid-medium">
+      <ShopifyProduct {...product} />
     </div>
-  </div>
-);
+  );
+};
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const apolloClient = initializeApollo();

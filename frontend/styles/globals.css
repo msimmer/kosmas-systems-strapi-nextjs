@@ -424,3 +424,13 @@ ul.k-dropdown-open {
   display: inline-block;
   margin: 0 var(--md);
 }
+
+.k-product-shopify {
+  margin-right: var(--md);
+}
+
+.k-product-shopify iframe {
+  margin: var(--offset-top) 0 var(--lg) !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}

@@ -79,6 +79,8 @@ declare module "k-component" {
     quantity: number;
     image: IImage;
     gallery: IImages;
+    shopifyScript: string;
+    shopifyElementId: string;
   }
 
   export type IProducts = IProduct[];
