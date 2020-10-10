@@ -1,11 +1,16 @@
 import React from "react";
-import { IPriceProps } from "k-component";
+import { IPriceProps, ICurrency } from "k-component";
+
+const formatPrice = (num: number, currency: ICurrency) =>
+  new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency,
+    currencyDisplay: "code",
+  }).format(num / 100);
 
 const Price = ({ currency, amount, className }: IPriceProps) => (
   <div className={className}>
-    <em>
-      {currency.toUpperCase()} {parseFloat(String(amount / 100)).toFixed(2)}
-    </em>
+    <em>{formatPrice(amount, currency)}</em>
   </div>
 );
 
