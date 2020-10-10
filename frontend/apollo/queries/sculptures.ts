@@ -2,7 +2,7 @@ import gql from "graphql-tag";
 
 const SCULPTURES_QUERY = gql`
   query Sculptures {
-    sculptures {
+    sculptures(sort: "order:DESC") {
       id
       title
       slug

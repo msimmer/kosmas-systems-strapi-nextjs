@@ -35,8 +35,8 @@ const Products = ({ products }: { products: IProducts }) => (
               <a>
                 <Image
                   className="k-image-contain k-image-padding k-image-hover"
-                  src={product.image.url}
-                  alt={product.image.alternativeText}
+                  src={product.image?.url}
+                  alt={product.image?.alternativeText}
                 />
 
                 <div

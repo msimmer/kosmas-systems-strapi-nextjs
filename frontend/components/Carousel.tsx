@@ -39,12 +39,12 @@ const Carousel = ({ images }: { images: IImages }) => {
     <div ref={carousel} className="k-carousel">
       {images.map((image) => (
         <div
-          key={image.id}
+          key={image?.id}
           className="k-carousel-image"
           onClick={handleClick}
           style={{ transform: `translateX(${position}px)` }}
         >
-          <Image src={image.url} alt={image.alternativeText} />
+          <Image src={image?.url} alt={image?.alternativeText} />
         </div>
       ))}
     </div>

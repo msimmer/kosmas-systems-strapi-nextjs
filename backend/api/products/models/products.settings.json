@@ -61,6 +61,10 @@
     },
     "shopifyScript": {
       "type": "text"
+    },
+    "order": {
+      "type": "biginteger",
+      "default": "0"
     }
   }
 }

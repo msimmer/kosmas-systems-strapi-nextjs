@@ -2,7 +2,7 @@ import gql from "graphql-tag";
 
 const PRODUCTS_QUERY = gql`
   query Products {
-    products {
+    products(sort: "order:DESC") {
       id
       title
       slug
