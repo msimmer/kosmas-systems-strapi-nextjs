@@ -65,13 +65,7 @@ const ShopifyProduct = (props: IProduct) => {
 };
 
 const ProductActions = (props: IProductActionsProps) => {
-  if (
-    !props.price ||
-    !props.currency ||
-    !props.quantity ||
-    !props.shopifyElementId ||
-    !props.shopifyScript
-  )
+  if (!props.price || !props.currency || !props.quantity) {
     return (
       <div className="uk-margin-medium-left">
         <strong>
@@ -79,29 +73,17 @@ const ProductActions = (props: IProductActionsProps) => {
         </strong>
       </div>
     );
+  }
 
   return (
-    <>
-      <div className="uk-flex uk-align-items-flex-end uk-margin-small-bottom">
-        <div className="uk-margin-small-right">
-          <Price amount={props.price} currency={props.currency} />
-        </div>
-        <div>
-          <label htmlFor="quantity" className="uk-flex uk-flex-column">
-            <span className="k-text-small">Qty:</span>
-            <input type="number" min="1" value="1" max={props.quantity} />
-          </label>
-        </div>
-      </div>
-      <div>
-        <button className="k-button-actions-buy">BUY</button>
-      </div>
-    </>
+    <div className="uk-margin-small-bottom">
+      <Price amount={props.price} currency={props.currency} />
+    </div>
   );
 };
 
 const Product = ({ product }: { product: IProduct }) => {
-  if (!product.price || !product.currency || !product.quantity) {
+  if (!product.shopifyElementId || !product.shopifyScript) {
     return (
       <div className="uk-grid uk-grid-medium">
         <ProductImages image={product.image} gallery={product.gallery} />
