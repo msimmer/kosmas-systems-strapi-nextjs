@@ -11,6 +11,10 @@ const PAGE_QUERY = gql`
         url
         alternativeText
       }
+      downloads {
+        id
+        url
+      }
     }
   }
 `;

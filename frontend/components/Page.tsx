@@ -1,15 +1,18 @@
 import React from "react";
 import ReactMarkdown from "react-markdown";
 import Image from "./Image";
-import { IImages } from "k-component";
+import { IFile, IImages } from "k-component";
 
 interface PageProps {
   title?: string;
   content?: string;
   gallery?: IImages;
+  downloads?: IFile[];
 }
 
-const Page = ({ title, content, gallery }: PageProps) => (
+const fileName = (url: string) => url.slice(url.lastIndexOf("/") + 1);
+
+const Page = ({ title, content, gallery, downloads }: PageProps) => (
   <div className="uk-container k-margin-mega-top">
     <div className="uk-grid uk-grid-medium uk-margin-small-top">
       {title && (
@@ -32,6 +35,19 @@ const Page = ({ title, content, gallery }: PageProps) => (
             <Image key={image.id} src={image.url} alt={image.alternativeText} />
           ))}
         </>
+      )}
+
+      {downloads && (
+        <div className="uk-margin-medium-top k-text-body">
+          <p className="uk-margin-remove-bottom">Downloads</p>
+          {downloads.map((download) => (
+            <div key={download.id}>
+              <a href={download.url} download={true}>
+                {fileName(download.url)}
+              </a>
+            </div>
+          ))}
+        </div>
       )}
     </div>
   </div>

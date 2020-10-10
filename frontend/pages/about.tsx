@@ -6,7 +6,7 @@ import { initializeApollo } from "@lib/apollo";
 import { GetServerSideProps } from "next";
 
 const About = ({ page }: { page: IPage }) => (
-  <Page title={page.title} content={page.content} />
+  <Page title={page.title} content={page.content} downloads={page.downloads} />
 );
 
 export const getServerSideProps: GetServerSideProps = async () => {

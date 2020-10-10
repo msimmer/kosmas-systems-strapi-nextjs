@@ -1,7 +1,10 @@
 declare module "k-component" {
-  export interface IImage {
+  export interface IFile {
     id: number;
     url: string;
+  }
+
+  export interface IImage extends IFile {
     alternativeText: string;
   }
 
@@ -56,6 +59,7 @@ declare module "k-component" {
     title: string;
     content: string;
     gallery: IImages;
+    downloads: IFile[];
   }
 
   export type IPages = IPage[];
