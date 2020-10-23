@@ -431,6 +431,4 @@ ul.k-dropdown-open {
 
 .k-product-shopify iframe {
   margin: var(--offset-top) 0 var(--lg) !important;
-  width: 100% !important;
-  max-width: 100% !important;
 }
