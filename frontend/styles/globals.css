@@ -432,3 +432,7 @@ ul.k-dropdown-open {
 .k-product-shopify iframe {
   margin: var(--offset-top) 0 var(--lg) !important;
 }
+
+.k-comic-image-wrapper {
+  max-width: 1000px;
+}

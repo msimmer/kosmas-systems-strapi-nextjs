@@ -10,11 +10,11 @@ import COMICS_QUERY from "@queries/comics";
 
 const Comic = ({ comic }: { comic: IComic }) => (
   <Grid columns={1}>
-    <>
+    <div className="k-comic-image-wrapper">
       {comic.gallery.map((image) => (
         <Image key={image.url} src={image.url} alt={image.alternativeText} />
       ))}
-    </>
+    </div>
   </Grid>
 );
 
