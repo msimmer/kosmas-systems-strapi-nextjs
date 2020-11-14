@@ -6,6 +6,7 @@ import UIkit from "uikit";
 import Icons from "uikit/dist/js/uikit-icons";
 import { ApolloProvider } from "@apollo/react-hooks";
 import Navigation from "@components/Navigation";
+import Favicons from "@components/Favicons";
 import Marquee from "@components/Marquee";
 import { AppProps } from "next/dist/next-server/lib/router/router";
 import { useApollo } from "../lib/apollo";
@@ -31,6 +32,8 @@ const App = ({ Component, pageProps }: AppProps) => {
       <Head>
         <title>Kosmas Systems</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+
+        <Favicons />
       </Head>
 
       <Marquee />
