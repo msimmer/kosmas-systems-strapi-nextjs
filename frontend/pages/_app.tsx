@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Head from "next/head";
 import Link from "next/link";
 import dynamic from "next/dynamic";
@@ -7,8 +7,6 @@ import Icons from "uikit/dist/js/uikit-icons";
 import { ApolloProvider } from "@apollo/react-hooks";
 import Navigation from "@components/Navigation";
 import Marquee from "@components/Marquee";
-import UIKitCircles from "@components/UIKitCircles";
-import UIKitClose from "@components/UIKitClose";
 import { AppProps } from "next/dist/next-server/lib/router/router";
 import { useApollo } from "../lib/apollo";
 
@@ -27,9 +25,6 @@ const RandomTitle = dynamic(() => import("@components/RandomTitle"), {
 
 const App = ({ Component, pageProps }: AppProps) => {
   const apolloClient = useApollo(pageProps.initialApolloState);
-  const [open, setOpen] = useState(false);
-
-  const handleClick = () => setOpen(!open);
 
   return (
     <ApolloProvider client={apolloClient}>
@@ -38,23 +33,9 @@ const App = ({ Component, pageProps }: AppProps) => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
 
-      <div className="k-marquee-header uk-width-1">
-        <Marquee />
-      </div>
+      <Marquee />
 
-      <button className="k-sidebar-toggle uk-hidden@m" onClick={handleClick}>
-        <span className="uk-icon-button">
-          {open ? <UIKitClose /> : <UIKitCircles />}
-        </span>
-      </button>
-
-      <div
-        className={`k-sidebar k-sidebar-${
-          open ? "active" : "inactive"
-        } uk-width-1-5@m`}
-      >
-        <Navigation handleClick={handleClick} />
-      </div>
+      <Navigation />
 
       <main className="uk-width-4-5@m uk-margin-auto-left@m">
         <div className="k-text-random">

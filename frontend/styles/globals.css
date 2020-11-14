@@ -107,7 +107,7 @@ em {
 
 .k-text-random {
   position: fixed;
-  top: var(--md);
+  top: 45px;
   left: var(--md);
 
   font-size: 7vw !important;
@@ -517,7 +517,7 @@ ul.k-dropdown-open {
   }
 
   .k-image-padding {
-    padding: var(--md);
+    padding: 0;
     left: 0;
   }
 
@@ -535,5 +535,10 @@ ul.k-dropdown-open {
 
   .k-product-shopify iframe {
     margin: 0 !important;
+  }
+
+  .k-sculpture-title,
+  .k-product-details {
+    left: 0;
   }
 }

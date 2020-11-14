@@ -6,25 +6,27 @@ import { IMarquee } from "k-component";
 import Query from "./Query";
 
 const Marquee = () => (
-  <div className="k-marquee">
-    <Query query={MARQUEE_QUERY}>
-      {({ marquee }: { marquee: IMarquee }) => {
-        const { bundle } = marquee;
-        if (!bundle.length) return <></>;
+  <div className="k-marquee-header uk-width-1">
+    <div className="k-marquee">
+      <Query query={MARQUEE_QUERY}>
+        {({ marquee }: { marquee: IMarquee }) => {
+          const { bundle } = marquee;
+          if (!bundle.length) return <></>;
 
-        return (
-          <>
-            <Malarquee fill={true} rate={60} hoverToPause={false}>
-              {bundle.map((entry) => (
-                <span key={entry.id}>
-                  <ReactMarkdown source={entry.markdown} />
-                </span>
-              ))}
-            </Malarquee>
-          </>
-        );
-      }}
-    </Query>
+          return (
+            <>
+              <Malarquee fill={true} rate={60} hoverToPause={false}>
+                {bundle.map((entry) => (
+                  <span key={entry.id}>
+                    <ReactMarkdown source={entry.markdown} />
+                  </span>
+                ))}
+              </Malarquee>
+            </>
+          );
+        }}
+      </Query>
+    </div>
   </div>
 );
 

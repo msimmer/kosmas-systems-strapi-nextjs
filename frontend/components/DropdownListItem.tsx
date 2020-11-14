@@ -6,7 +6,7 @@ import { IComics } from "k-component";
 
 interface DropdownListItemProps {
   title: string;
-  handleClick?: () => void;
+  handleClick?: (e?: any) => void;
 }
 
 const DropdownListItem = ({ title, handleClick }: DropdownListItemProps) => {
