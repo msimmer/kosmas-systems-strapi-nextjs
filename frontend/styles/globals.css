@@ -511,9 +511,16 @@ ul.k-dropdown-open {
   }
 
   .k-column-product,
-  .k-sculpture,
-  .k-article {
+  .k-sculpture {
     height: var(--height-mobile);
+  }
+
+  .k-sculpture-detail {
+    height: auto;
+  }
+
+  .k-article {
+    min-height: var(--height-mobile);
   }
 
   .k-image-padding {
@@ -540,5 +547,9 @@ ul.k-dropdown-open {
   .k-sculpture-title,
   .k-product-details {
     left: 0;
+  }
+
+  .k-text-body {
+    padding: 0 var(--sm);
   }
 }

@@ -33,12 +33,13 @@ const Sculpture = ({ sculpture }: { sculpture: ISculpture }) => {
   return (
     <Grid columns={1}>
       <div>
-        <h2 className="k-margin-mega-top uk-margin-medium-bottom">
-          {sculpture.title}
-        </h2>
-
-        <div className="uk-margin-large-bottom uk-width-3-5 k-text-body">
-          <ReactMarkdown source={sculpture.content} />
+        <div className="uk-margin-large-bottom uk-width-3-5@m k-text-body">
+          <div>
+            <h2 className="k-margin-mega-top uk-margin-medium-bottom">
+              {sculpture.title}
+            </h2>
+            <ReactMarkdown source={sculpture.content} />
+          </div>
         </div>
 
         {sculpture.gallery.map((image) => (

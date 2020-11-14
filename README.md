@@ -1,1 +1,1 @@
-# kosmas-systems-strapi-nextjs
+# [kosmas.systems](https://kosmas.systems)

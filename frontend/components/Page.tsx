@@ -23,30 +23,34 @@ const Page = ({ title, content, gallery, downloads }: PageProps) => (
 
       {content && (
         <div className="uk-grid uk-grid-medium">
-          <div className="uk-width-3-5@m k-text-body">
-            <ReactMarkdown source={content} />
+          <div>
+            <div className="uk-width-3-5@m k-text-body uk-padding-remove">
+              <ReactMarkdown source={content} />
+            </div>
           </div>
         </div>
       )}
 
       {gallery && (
-        <>
+        <div>
           {gallery.map((image) => (
             <Image key={image.id} src={image.url} alt={image.alternativeText} />
           ))}
-        </>
+        </div>
       )}
 
       {downloads && (
         <div className="uk-margin-medium-top k-text-body">
-          <p className="uk-margin-remove-bottom">Downloads</p>
-          {downloads.map((download) => (
-            <div key={download.id}>
-              <a href={download.url} download={true}>
-                {fileName(download.url)}
-              </a>
-            </div>
-          ))}
+          <div className="k-text-body">
+            <p className="uk-margin-remove-bottom">Downloads</p>
+            {downloads.map((download) => (
+              <div key={download.id}>
+                <a href={download.url} download={true}>
+                  {fileName(download.url)}
+                </a>
+              </div>
+            ))}
+          </div>
         </div>
       )}
     </div>
