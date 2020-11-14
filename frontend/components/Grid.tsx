@@ -10,7 +10,7 @@ const Grid = ({ columns, children, collapse }: GridProps) => (
   <div
     className={`uk-grid uk-grid-medium ${
       collapse ? "uk-grid-collapse" : ""
-    } uk-child-width-1-${columns}@s`}
+    } uk-child-width-1-${columns}@m`}
   >
     {children}
   </div>

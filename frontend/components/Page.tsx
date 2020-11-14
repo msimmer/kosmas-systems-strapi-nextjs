@@ -14,7 +14,7 @@ const fileName = (url: string) => url.slice(url.lastIndexOf("/") + 1);
 
 const Page = ({ title, content, gallery, downloads }: PageProps) => (
   <div className="uk-container k-margin-mega-top">
-    <div className="uk-grid uk-grid-medium uk-margin-small-top">
+    <div className="uk-grid uk-grid-medium uk-margin-small-top@m">
       {title && (
         <div>
           <h2 className="uk-margin-medium-bottom">{title}</h2>
@@ -23,7 +23,7 @@ const Page = ({ title, content, gallery, downloads }: PageProps) => (
 
       {content && (
         <div className="uk-grid uk-grid-medium">
-          <div className="uk-width-3-5 k-text-body">
+          <div className="uk-width-3-5@m k-text-body">
             <ReactMarkdown source={content} />
           </div>
         </div>

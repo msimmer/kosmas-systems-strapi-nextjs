@@ -25,7 +25,7 @@ interface IProductImagesProps {
 const ProductImages = ({ image, gallery }: IProductImagesProps) => {
   const images = [image].concat(gallery);
   return (
-    <div className="uk-width-3-5@s uk-padding-medium-right">
+    <div className="uk-width-3-5@m uk-padding-medium-right@m">
       <Carousel images={images} />
     </div>
   );
@@ -58,7 +58,9 @@ const ShopifyProduct = (props: IProduct) => {
       </Head>
 
       <div className="uk-width-1 k-product-shopify">
-        <div id={`product-component-${props.shopifyElementId}`}></div>
+        <div className="uk-padding-medium-right uk-padding-medium-left">
+          <div id={`product-component-${props.shopifyElementId}`}></div>
+        </div>
       </div>
     </>
   );
@@ -87,7 +89,7 @@ const Product = ({ product }: { product: IProduct }) => {
     return (
       <div className="uk-grid uk-grid-medium">
         <ProductImages image={product.image} gallery={product.gallery} />
-        <div className="uk-width-2-5@s uk-margin-medium-top uk-margin-medium-bottom k-product-actions">
+        <div className="uk-width-2-5@m uk-margin-medium-top uk-margin-medium-bottom k-product-actions">
           <ProductDetails {...product} />
           <ProductActions {...product} />
         </div>

@@ -6,9 +6,10 @@ import { IComics } from "k-component";
 
 interface DropdownListItemProps {
   title: string;
+  handleClick?: () => void;
 }
 
-const DropdownListItem = ({ title }: DropdownListItemProps) => {
+const DropdownListItem = ({ title, handleClick }: DropdownListItemProps) => {
   const [open, setOpen] = useState(false);
   const className = open ? "open" : "closed";
 
@@ -30,6 +31,7 @@ const DropdownListItem = ({ title }: DropdownListItemProps) => {
                     key={comic.id}
                     href={`/comix/${comic.slug}`}
                     title={comic.title}
+                    handleClick={handleClick}
                   />
                 ))}
               </>
