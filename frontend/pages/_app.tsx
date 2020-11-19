@@ -32,6 +32,10 @@ const App = ({ Component, pageProps }: AppProps) => {
       <Head>
         <title>Kosmas Systems</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta
+          name="description"
+          content="Nik Kosmas is based in Shanghai. His work is a physical, emotional, and spiritual journey through technology, human experience, suffering, and growth. Science fiction, sports practice, science, sex and psychology are fertile fields of research and inspiration."
+        />
 
         <Favicons />
       </Head>
