@@ -45,7 +45,10 @@ const Page = ({ title, content, gallery, downloads }: PageProps) => (
             <p className="uk-margin-remove-bottom">Downloads</p>
             {downloads.map((download) => (
               <div key={download.id}>
-                <a href={download.url} download={true}>
+                <a
+                  href={`${process.env.API_URL}${download.url}`}
+                  download={fileName(download.url)}
+                >
                   {fileName(download.url)}
                 </a>
               </div>
