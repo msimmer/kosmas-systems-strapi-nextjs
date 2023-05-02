@@ -35,7 +35,6 @@ const Navigation = () => {
             <DropdownListItem handleClick={handleClick} title="Comix" />
             <ListItem handleClick={handleClick} title="About" />
             <ListItem handleClick={handleClick} title="Press" />
-            <ListItem handleClick={handleClick} title="Swirl" />
           </ul>
         </nav>
       </div>
