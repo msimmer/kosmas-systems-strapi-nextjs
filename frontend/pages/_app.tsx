@@ -34,7 +34,7 @@ const App = ({ Component, pageProps }: AppProps) => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta
           name="description"
-          content="Nik Kosmas is based in Shanghai. His work is a physical, emotional, and spiritual journey through technology, human experience, suffering, and growth. Science fiction, sports practice, science, sex and psychology are fertile fields of research and inspiration."
+          content="Nik Kosmas is an artist, working across sculpture, fashion, design and sport. Dense with suffering beauty, technical obsession and visceral weirdness. Control freak, optimistic dreamer. Persist in creation. Provoke acceptance."
         />
 
         <Favicons />
