@@ -1,4 +1,5 @@
 import React from "react";
+import Head from "next/head";
 import Grid from "@components/Grid";
 import Image from "@components/Image";
 import ARTICLES_QUERY from "@queries/articles";
@@ -18,7 +19,13 @@ const ArticleImage = ({ image }: { image: IImage }) => {
 };
 
 const Articles = ({ articles }: { articles: IArticles }) => (
-  <Grid columns={2} collapse={true}>
+  <>
+    <Head>
+      <title>Press — Kosmas Systems</title>
+      <meta name="description" content="" />
+    </Head>
+
+    <Grid columns={2} collapse={true}>
     <>
       {articles.map((article) => {
         const sourceURL = article.source_url || "#";
@@ -48,7 +55,8 @@ const Articles = ({ articles }: { articles: IArticles }) => (
         );
       })}
     </>
-  </Grid>
+    </Grid>
+  </>
 );
 
 export const getStaticProps: GetStaticProps = async () => {

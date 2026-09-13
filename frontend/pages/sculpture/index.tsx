@@ -1,4 +1,5 @@
 import React from "react";
+import Head from "next/head";
 import Link from "next/link";
 import Grid from "@components/Grid";
 import Image from "@components/Image";
@@ -8,7 +9,13 @@ import { initializeApollo } from "@lib/apollo";
 import { GetServerSideProps } from "next";
 
 const Sculptures = ({ sculptures }: { sculptures: ISculptures }) => (
-  <Grid columns={2} collapse={true}>
+  <>
+    <Head>
+      <title>Sculpture — Kosmas Systems</title>
+      <meta name="description" content="" />
+    </Head>
+
+    <Grid columns={2} collapse={true}>
     <>
       {sculptures.map((sculpture) => (
         <div className="k-sculpture" key={sculpture.id}>
@@ -26,7 +33,8 @@ const Sculptures = ({ sculptures }: { sculptures: ISculptures }) => (
         </div>
       ))}
     </>
-  </Grid>
+    </Grid>
+  </>
 );
 
 export const getServerSideProps: GetServerSideProps = async () => {

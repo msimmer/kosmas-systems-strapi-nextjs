@@ -1,4 +1,5 @@
 import React from "react";
+import Head from "next/head";
 import { GetStaticPaths, GetStaticProps } from "next";
 import ReactMarkdown from "react-markdown";
 import Grid from "@components/Grid";
@@ -8,6 +9,7 @@ import { initializeApollo } from "@lib/apollo";
 import SCULPTURE_QUERY from "@queries/sculpture";
 import SCULPTURES_QUERY from "@queries/sculptures";
 import { REVALIDATION_TIMEOUT } from "@lib/constants";
+import { excerpt } from "@lib/text";
 import { useRouter } from "next/dist/client/router";
 
 const Sculpture = ({ sculpture }: { sculpture: ISculpture }) => {
@@ -31,27 +33,37 @@ const Sculpture = ({ sculpture }: { sculpture: ISculpture }) => {
   }
 
   return (
-    <Grid columns={1}>
-      <div>
-        <div className="uk-margin-large-bottom uk-width-3-5@m k-text-body">
-          <div>
-            <h2 className="k-margin-mega-top uk-margin-medium-bottom">
-              {sculpture.title}
-            </h2>
-            <ReactMarkdown source={sculpture.content} />
-          </div>
-        </div>
+    <>
+      <Head>
+        <title>{sculpture.title} — Kosmas Systems</title>
+        <meta
+          name="description"
+          content={sculpture.content ? excerpt(sculpture.content) : ""}
+        />
+      </Head>
 
-        {sculpture.gallery.map((image) => (
-          <div
-            key={image.url}
-            className="k-sculpture-detail uk-margin-medium-bottom"
-          >
-            <Image src={image.url} alt={image.alternativeText} />
+      <Grid columns={1}>
+        <div>
+          <div className="uk-margin-large-bottom uk-width-3-5@m k-text-body">
+            <div>
+              <h2 className="k-margin-mega-top uk-margin-medium-bottom">
+                {sculpture.title}
+              </h2>
+              <ReactMarkdown source={sculpture.content} />
+            </div>
           </div>
-        ))}
-      </div>
-    </Grid>
+
+          {sculpture.gallery.map((image) => (
+            <div
+              key={image.url}
+              className="k-sculpture-detail uk-margin-medium-bottom"
+            >
+              <Image src={image.url} alt={image.alternativeText} />
+            </div>
+          ))}
+        </div>
+      </Grid>
+    </>
   );
 };
 

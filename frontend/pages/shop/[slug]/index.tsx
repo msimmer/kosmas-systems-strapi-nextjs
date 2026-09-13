@@ -9,6 +9,7 @@ import { initializeApollo } from "@lib/apollo";
 import PRODUCT_QUERY from "@queries/product";
 import PRODUCTS_QUERY from "@queries/products";
 import { REVALIDATION_TIMEOUT } from "@lib/constants";
+import { excerpt } from "@lib/text";
 
 type IProductDetailsProps = Pick<IProduct, "title" | "content">;
 
@@ -85,9 +86,20 @@ const ProductActions = (props: IProductActionsProps) => {
 };
 
 const Product = ({ product }: { product: IProduct }) => {
+  const productHead = (
+    <Head>
+      <title>{product.title} — Kosmas Systems</title>
+      <meta
+        name="description"
+        content={product.content ? excerpt(product.content) : ""}
+      />
+    </Head>
+  );
+
   if (!product.shopifyElementId || !product.shopifyScript) {
     return (
       <div className="uk-grid uk-grid-medium">
+        {productHead}
         <ProductImages image={product.image} gallery={product.gallery} />
         <div className="uk-width-2-5@m uk-margin-medium-top uk-margin-medium-bottom k-product-actions">
           <ProductDetails {...product} />
@@ -99,6 +111,7 @@ const Product = ({ product }: { product: IProduct }) => {
 
   return (
     <div className="uk-grid uk-grid-medium">
+      {productHead}
       <ShopifyProduct {...product} />
     </div>
   );

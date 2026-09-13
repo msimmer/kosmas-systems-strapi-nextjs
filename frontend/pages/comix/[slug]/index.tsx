@@ -1,4 +1,5 @@
 import React from "react";
+import Head from "next/head";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Grid from "@components/Grid";
 import Image from "@components/Image";
@@ -9,13 +10,20 @@ import COMIC_QUERY from "@queries/comic";
 import COMICS_QUERY from "@queries/comics";
 
 const Comic = ({ comic }: { comic: IComic }) => (
-  <Grid columns={1}>
-    <div className="k-comic-image-wrapper">
-      {comic.gallery.map((image) => (
-        <Image key={image.url} src={image.url} alt={image.alternativeText} />
-      ))}
-    </div>
-  </Grid>
+  <>
+    <Head>
+      <title>{comic.title} — Kosmas Systems</title>
+      <meta name="description" content="" />
+    </Head>
+
+    <Grid columns={1}>
+      <div className="k-comic-image-wrapper">
+        {comic.gallery.map((image) => (
+          <Image key={image.url} src={image.url} alt={image.alternativeText} />
+        ))}
+      </div>
+    </Grid>
+  </>
 );
 
 export const getStaticPaths: GetStaticPaths = async () => {

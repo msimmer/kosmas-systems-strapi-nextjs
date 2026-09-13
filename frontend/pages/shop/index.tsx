@@ -1,4 +1,5 @@
 import React from "react";
+import Head from "next/head";
 import Link from "next/link";
 import Grid from "@components/Grid";
 import Image from "@components/Image";
@@ -26,7 +27,13 @@ const PurchaseDetails = ({ product }: { product: IProduct }) => {
 };
 
 const Products = ({ products }: { products: IProducts }) => (
-  <Grid columns={2} collapse={true}>
+  <>
+    <Head>
+      <title>Shop — Kosmas Systems</title>
+      <meta name="description" content="" />
+    </Head>
+
+    <Grid columns={2} collapse={true}>
     <>
       {products.map((product) => {
         return (
@@ -54,7 +61,8 @@ const Products = ({ products }: { products: IProducts }) => (
         );
       })}
     </>
-  </Grid>
+    </Grid>
+  </>
 );
 
 export const getServerSideProps: GetServerSideProps = async () => {
